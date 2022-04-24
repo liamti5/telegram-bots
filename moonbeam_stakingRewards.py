@@ -6,11 +6,13 @@ Created on Sat Apr  9 12:19:01 2022
 """
 
 import requests
-from datetime import datetime
+from datetime import datetime, date
 
 def getInfo():
+    today = date.today()
+    
     parameters = {
-        "row": 1,
+        "row": 10,
         "page": 1,
         "address": "0xdB4Ff740721A1d2ebD4B040CD0c4a7d794DEA141"
     }
@@ -20,8 +22,14 @@ def getInfo():
     
     eventID = response.json()["data"]["list"][0]["event_index"]
     reward = float(response.json()["data"]["list"][0]["amount"])/10**18
-    time = datetime.fromtimestamp(response.json()["data"]["list"][0]["block_timestamp"])
+    time = date.fromtimestamp(response.json()["data"]["list"][0]["block_timestamp"])
     
-    return print(time, f"EventID {eventID}: \n{reward} GLMR")
+    s = 0
+    if time == today:
+        s += reward  
+    
+    return f"reward for {today} is {s}, last reward EventID: {eventID}"
 
-getInfo()
+print(getInfo())
+
+
