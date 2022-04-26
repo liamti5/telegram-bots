@@ -24,11 +24,13 @@ def getInfo():
     reward = float(response.json()["data"]["list"][0]["amount"])/10**18
     time = date.fromtimestamp(response.json()["data"]["list"][0]["block_timestamp"])
     
+    days_ago = today - time
+    
     s = 0
     if time == today:
         s += reward  
     
-    return f"reward for {today} is {s}, last reward EventID: {eventID}"
+    return f"reward for {today} is {s}\nlast reward EventID: {eventID} ({days_ago} ago)"
 
 print(getInfo())
 
