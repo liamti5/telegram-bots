@@ -5,6 +5,8 @@ Created on Sun Apr 24 09:53:55 2022
 @author: liamt
 """
 
+# missing sensitive data
+
 import requests
 from datetime import datetime, date
 
@@ -14,7 +16,7 @@ def getInfo():
     parameters = {
         "row": 10,
         "page": 1,
-        "address": "0xdB4Ff740721A1d2ebD4B040CD0c4a7d794DEA141"
+        "address": ""
     }
     
     response = requests.get("https://moonbeam.api.subscan.io/api/scan/account/reward_slash", 
@@ -34,9 +36,9 @@ def getInfo():
 
 text = getInfo()
 
-urls = "https://api.telegram.org/bot5132716808:AAHdavWm0kFveXmrqudv8CinhONvqJ3HtOY/sendMessage"
+urls = "https://api.telegram.org/"
 
-response = requests.post(url = urls, data = {"chat_id": 1372941487, "text": f"{text}"}).json()
+response = requests.post(url = urls, data = {"chat_id": , "text": f"{text}"}).json()
 
 print(response)
 
