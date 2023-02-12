@@ -14,7 +14,7 @@ def getInfo():
     parameters = {
         "row": 10,
         "page": 1,
-        "address": "0xdB4Ff740721A1d2ebD4B040CD0c4a7d794DEA141"
+        "address": ""
     }
     
     response = requests.get("https://moonbeam.api.subscan.io/api/scan/account/reward_slash", 
